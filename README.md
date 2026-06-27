@@ -12,6 +12,8 @@ source: User request; public reporting on the "鹅腿阿姨" campus meme and lat
 
 Open `index.html` directly in a browser. No build step or network dependency is required.
 
+Public deployment: `https://oliveryounger.github.io/goose-duck-verdict-game/`
+
 ## Game Loop
 
 - 35-second rapid session tuned for vertical phone play.
