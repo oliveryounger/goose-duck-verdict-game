@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>鹅鸭鉴定局</title>
+  <meta name="description" content="35 秒急速鉴腿：看原料、看招牌、看小票，别让群聊截图把你送上热搜。">
+  <meta name="theme-color" content="#f6efe2">
+  <meta property="og:title" content="鹅鸭鉴定局">
+  <meta property="og:description" content="35 秒急速鉴腿小游戏。你能守住信任不翻车吗？">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="phone-app">
+    <header class="hud">
+      <div class="hud-title">
+        <p>九点接龙</p>
+        <h1>鹅鸭鉴定局</h1>
+      </div>
+      <button id="soundBtn" class="icon-btn" type="button" aria-label="切换音效">声</button>
+    </header>
+
+    <section class="score-row" aria-live="polite">
+      <div class="score-chip hot">
+        <span>倒计时</span>
+        <strong id="timeValue">35</strong>
+      </div>
+      <div class="score-chip">
+        <span>得分</span>
+        <strong id="scoreValue">0</strong>
+      </div>
+      <div class="score-chip">
+        <span>连击</span>
+        <strong id="comboValue">0</strong>
+      </div>
+    </section>
+
+    <section class="meter-stack">
+      <div class="meter">
+        <div><span>信任</span><strong id="trustValue">100</strong></div>
+        <i><b id="trustBar"></b></i>
+      </div>
+      <div class="meter heat-meter">
+        <div><span>热搜</span><strong id="heatValue">0</strong></div>
+        <i><b id="heatBar"></b></i>
+      </div>
+    </section>
+
+    <section id="stage" class="stage idle" aria-label="鉴定台">
+      <div id="burstLayer" class="burst-layer" aria-hidden="true"></div>
+      <div class="stall-sign">
+        <span id="rankLabel">未上榜</span>
+        <strong id="trendLabel">#今天到底什么腿#</strong>
+      </div>
+
+      <div id="legArt" class="leg-art goose" aria-hidden="true">
+        <span class="bone"></span>
+        <span class="meat"></span>
+        <span class="shine"></span>
+        <span class="tag">鹅?</span>
+      </div>
+
+      <article id="caseCard" class="case-card">
+        <div class="case-topline">
+          <span id="orderNumber">第 0 单</span>
+          <em id="paceLabel">待开局</em>
+        </div>
+        <h2 id="caseTitle">点开始，抢救接龙群</h2>
+        <p id="caseQuote">今晚不是排队大战，是商品名阅读理解。</p>
+        <div id="clueGrid" class="clue-grid"></div>
+      </article>
+
+      <div id="toast" class="toast" role="status" aria-live="polite">准备开摊</div>
+    </section>
+
+    <section class="actions" aria-label="处理方式">
+      <button class="action-btn goose-action" data-action="goose" type="button">
+        <span>真鹅</span>
+        <strong>鹅腿出单</strong>
+      </button>
+      <button class="action-btn duck-action" data-action="duck" type="button">
+        <span>明示</span>
+        <strong>鸭腿改名</strong>
+      </button>
+      <button class="action-btn flavor-action" data-action="flavor" type="button">
+        <span>风味</span>
+        <strong>梗名保留</strong>
+      </button>
+      <button class="action-btn inspect-action" data-action="inspect" type="button">
+        <span>暂停</span>
+        <strong>先核验</strong>
+      </button>
+    </section>
+
+    <section class="feed-strip">
+      <div id="feedTicker" class="feed-ticker">群友：今晚谁敢糊名，谁上热搜。</div>
+      <button id="startBtn" class="start-btn" type="button">开始鉴定</button>
+      <button id="resetBtn" class="ghost-btn" type="button">重开</button>
+    </section>
+  </main>
+
+  <dialog id="resultDialog" class="result-dialog">
+    <form method="dialog" class="result-panel">
+      <div class="result-head">
+        <p>本局战报</p>
+        <button value="close" type="submit" aria-label="关闭">关</button>
+      </div>
+      <canvas id="posterCanvas" width="900" height="1350" aria-label="可分享战报图"></canvas>
+      <h2 id="resultTitle">鉴定完成</h2>
+      <p id="resultSummary"></p>
+      <div id="resultStats" class="result-stats"></div>
+      <div class="result-actions">
+        <button id="playAgainBtn" class="start-btn" type="button">再来一局</button>
+        <button id="copyBtn" type="button">复制挑战</button>
+        <button id="downloadBtn" type="button">存战报图</button>
+        <button id="shareBtn" type="button">发给朋友</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
